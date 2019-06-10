@@ -29,6 +29,8 @@
 		class="springdemo.CricketCoach">
 	
 		<property name="fortuneService" ref="fortuneService" />
+		<property name="emailAddress" value="ignaciojvig@gmail.com" />
+		<property name="team" value="Sunskippers" />
 	</bean>
 </beans>
 
