@@ -15,8 +15,14 @@
 	
     <!-- Define your beans here -->
     
+    <bean id="fortuneService" 
+    	class="springdemo.HappyFortuneService">
+    </bean>
+    
+    
  	<bean id="myCoach"
- 		class="springdemo.TrackCoach">	 		
+ 		class="springdemo.TrackCoach">
+ 		<constructor-arg ref="fortuneService" />	 		
  	</bean>
 
 </beans>
