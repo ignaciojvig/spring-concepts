@@ -8,8 +8,11 @@ public class TennisCoach implements Coach {
 
 	private FortuneService fortuneService;
 	
+	public TennisCoach() {
+	}
+	
 	@Autowired
-	public TennisCoach(FortuneService theFortuneService) {
+	public void setFortuneService(FortuneService theFortuneService) {
 		fortuneService = theFortuneService;
 	}
 	
