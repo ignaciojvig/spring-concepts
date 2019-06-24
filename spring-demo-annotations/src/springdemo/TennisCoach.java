@@ -1,12 +1,14 @@
 package springdemo;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
 public class TennisCoach implements Coach {
 
 	@Autowired
@@ -14,6 +16,18 @@ public class TennisCoach implements Coach {
 	private FortuneService fortuneService;
 	
 	public TennisCoach() {
+	}
+	
+	// define init method
+	@PostConstruct
+	public void StartupStuff() {
+		System.out.println("TennisCoach is Starting - postcontruct method");
+	}
+	
+	// define destroy method
+	@PreDestroy
+	public void CleanupStuff() {
+		System.out.println("Tennis Coach is being destroyed - predestroy method");
 	}
 	
 	@Override
