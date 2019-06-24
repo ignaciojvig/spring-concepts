@@ -12,7 +12,7 @@ public class TennisCoach implements Coach {
 	}
 	
 	@Autowired
-	public void setFortuneService(FortuneService theFortuneService) {
+	public void doSomeCrazyStuff(FortuneService theFortuneService) {
 		fortuneService = theFortuneService;
 	}
 	
