@@ -17,6 +17,10 @@
 		
 		<br/><br/>
 		
+		Postal Code: ${customer.postalCode}
+		
+		<br/><br/>
+		
 	</body>
 
 </html>
