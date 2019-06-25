@@ -14,6 +14,11 @@
 		<br/> <br/>
 		
 		Country: ${student.country}
+		
+		<br/> <br/>
+		
+		Favorite Programming Language: ${student.favoriteLanguage}
+		
 	</body>
 
 </html>
