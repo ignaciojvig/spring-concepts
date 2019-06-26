@@ -1,1 +1,4 @@
-/jdbc/
+/hibernate/
+/docs/
+
+hibernate.cfg.xml
