@@ -8,7 +8,7 @@ import hibernate.demo.entity.Instructor;
 import hibernate.demo.entity.InstructorDetail;
 import hibernate.demo.entity.Student;
 
-public class GetInstructorDetailDemo {
+public class DeleteInstructorDetailDemo {
 
 	public static void main(String[] args) {
 		
@@ -27,7 +27,7 @@ public class GetInstructorDetailDemo {
 			session.beginTransaction();
 			
 			// get the instructor detail object
-			int theId = 2;
+			int theId = 3;
 			
 			InstructorDetail tempInstructorDetail = 
 					session.get(InstructorDetail.class, theId);			
@@ -39,12 +39,18 @@ public class GetInstructorDetailDemo {
 			// print the associated instructor		
 			System.out.println(tempInstructorDetail.getInstructor());
 			
+			// remove the associated object reference
+			// ** break bi-directional link
+			tempInstructorDetail.getInstructor().setInstructorDetail(null);
+			
+			session.delete(tempInstructorDetail);
+			
 			// commit transaction
 			session.getTransaction().commit();
 			
 		}
 		catch(Exception exc) {
-			
+			exc.printStackTrace();
 		}
 		finally {
 			// handle connection leak issue
