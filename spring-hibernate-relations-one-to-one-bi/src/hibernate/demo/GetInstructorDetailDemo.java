@@ -8,7 +8,7 @@ import hibernate.demo.entity.Instructor;
 import hibernate.demo.entity.InstructorDetail;
 import hibernate.demo.entity.Student;
 
-public class CreateDemo {
+public class GetInstructorDetailDemo {
 
 	public static void main(String[] args) {
 		
@@ -22,23 +22,22 @@ public class CreateDemo {
 		// Create a Session
 		Session session = factory.getCurrentSession();
 		
-		try {			
-			Instructor tempInstructor =
-					new Instructor("João", "Ignacio", "ignaciojvig@gmail.com");
-			
-			InstructorDetail tempInstructorDetail = 
-					new InstructorDetail("http://youtube.com/canalDoJao", "Love2Code");
-			
-			tempInstructor.setInstructorDetail(tempInstructorDetail);
-			
+		try {		
 			// start a transaction
 			session.beginTransaction();
 			
-			// save the instructor
-			session.save(tempInstructor);
-			// Note: Will ALSO save the 'InstructorDetail' object, because of CascadeType.ALL
+			// get the instructor detail object
+			int theId = 2;
 			
-			System.out.println(tempInstructor);
+			InstructorDetail tempInstructorDetail = 
+					session.get(InstructorDetail.class, theId);			
+			
+			// print the instructor detail
+			System.out.println(tempInstructorDetail);
+			
+			
+			// print the associated instructor		
+			System.out.println(tempInstructorDetail.getInstructor());
 			
 			// commit transaction
 			session.getTransaction().commit();
