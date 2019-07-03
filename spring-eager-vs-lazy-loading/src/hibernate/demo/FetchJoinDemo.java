@@ -3,12 +3,13 @@ package hibernate.demo;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import hibernate.demo.entity.Course;
 import hibernate.demo.entity.Instructor;
 import hibernate.demo.entity.InstructorDetail;
 
-public class EagerLazyDemo {
+public class FetchJoinDemo {
 
 	public static void main(String[] args) {
 		
@@ -30,18 +31,32 @@ public class EagerLazyDemo {
 			// get the instructor from db
 			int theId = 1;
 			
-			Instructor tempInstructor = session.get(Instructor.class, theId);
+			Query<Instructor> query =
+					session.createQuery(
+							"select i from Instructor i "
+							+ "JOIN FETCH i.courses "
+							+ "where i.id=:theInstructorId", 
+					Instructor.class);
+			
+			// set parameter on query
+			query.setParameter("theInstructorId", theId);
+			
+			Instructor tempInstructor = query.getSingleResult();
 			
 			// print instructor
 			System.out.println(tempInstructor);
 			
-			System.out.println(tempInstructor.getCourses());
-			
 			// commit transaction
 			session.getTransaction().commit();
+		
+			session.close();
+			
+			// Thanks to JoinFetch, we will be able to see 'courses' even after
+			// session been closed
+			
+			System.out.println(tempInstructor.getCourses());
 		}
 		finally {
-			session.close();
 			factory.close();
 		}
 	}
