@@ -7,9 +7,8 @@ import org.hibernate.cfg.Configuration;
 import hibernate.demo.entity.Course;
 import hibernate.demo.entity.Instructor;
 import hibernate.demo.entity.InstructorDetail;
-import hibernate.demo.entity.Review;
 
-public class CreateCoursesDemo {
+public class CreateCourseAndReviewsDemo {
 
 	public static void main(String[] args) {
 		
@@ -19,7 +18,6 @@ public class CreateCoursesDemo {
 											.addAnnotatedClass(Instructor.class)
 											.addAnnotatedClass(InstructorDetail.class)
 											.addAnnotatedClass(Course.class)
-											.addAnnotatedClass(Review.class)
 											.buildSessionFactory();
 		
 		// Create a Session
@@ -29,15 +27,22 @@ public class CreateCoursesDemo {
 			// start a transaction
 			session.beginTransaction();
 			
-			Course tempCourse = new Course("Pacman - How to Score One Million Points");
+			// get the instructor from db
+			int theId = 1;
 			
-			tempCourse.addReview(new Review("Great Course... loved it!"));
-			tempCourse.addReview(new Review("Cool course, job well done"));
-			tempCourse.addReview(new Review("What a dumb course"));
+			Instructor tempInstructor = session.get(Instructor.class, theId);
 			
-			session.save(tempCourse);
-			System.out.println(tempCourse);
-			System.out.println(tempCourse.getReviews());
+			// create some courses
+			Course tempCourse1 = new Course("Air Guitar - the Ultimate Guide");
+			Course tempCourse2 = new Course("The Pinball Masterclass");
+			
+			// add courses to instructor
+			tempInstructor.add(tempCourse1);
+			tempInstructor.add(tempCourse2);
+			
+			// save the courses	
+			session.save(tempCourse1);
+			session.save(tempCourse2);
 			
 			// commit transaction
 			session.getTransaction().commit();
