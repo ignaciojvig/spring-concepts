@@ -23,6 +23,13 @@
 		
 		<div id="container">
 			<div id="content">
+			
+			<!-- button New Customer -->
+			<input type="button" 
+				class="add-button"
+				value="Add Customer"
+				onClick="window.location.href='showFormForAdd'; return false;"/>
+			
 				<table>
 					<tr>
 						<th> First Name </th>
