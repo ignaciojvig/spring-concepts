@@ -13,8 +13,13 @@ public class MyDemoLogginAspect {
 	private void forDaoPackage() {};
 	
 	// this is where all advices can be added
-	@Before("forDaoPackage()") // Pointcut Expression
+	@Before("forDaoPackage()")
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n ==========> Executing @Before Advice on addAccount()");
+	}
+	
+	@Before("forDaoPackage()")
+	public void performApiAnalytics() {
+		System.out.println("\n ==========> Performing API Analytics");
 	}
 }
