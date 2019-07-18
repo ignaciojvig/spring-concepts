@@ -30,7 +30,28 @@ public class MyDemoLogginAspect {
 		
 		System.out.println("*AfterReturning* result is: " + result);
 		
+		// convert the account names to uppercase
+		convertAccountNamesToUpperCase(result);
+		
+		System.out.println("*AfterReturning* after modification result is: " + result);
+		
 	}
+	
+	private void convertAccountNamesToUpperCase(List<Account> result) {
+		
+		// loop through accounts
+		for(Account tempAccount : result)
+			tempAccount.setName(
+					tempAccount.getName().toUpperCase());	
+	}
+
+	
+	
+	
+	
+	
+	
+	
 	
 	// this is where all advices can be added
 	@Before("com.aopdemo.aspect.PointcutExpressions.forDaoPackageWithoutGetterAndSetter()")
