@@ -20,7 +20,13 @@ public class MainDemoApp {
 		// call the business method
 		Account myAccount = new Account();
 		theAccountDAO.addAccount(myAccount, true);
-		theMembershipDAO.addSillyMethod();
+		theAccountDAO.doWork();
+		
+		theAccountDAO.setName("foobar");
+		theAccountDAO.setServiceCode("Silver");
+		
+		theAccountDAO.getName();
+		theAccountDAO.getServiceCode();
 		
 		// close the context
 		context.close();		
