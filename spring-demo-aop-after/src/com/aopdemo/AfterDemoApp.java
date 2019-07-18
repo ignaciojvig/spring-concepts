@@ -22,7 +22,7 @@ public class AfterDemoApp {
 		
 		try {
 			// add a boolean flag to simulate an exception
-			boolean tripWire = true;
+			boolean tripWire = false;
 			
 			theAccounts = theAccountDAO.findAccounts(tripWire);
 		}
