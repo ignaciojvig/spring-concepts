@@ -19,7 +19,7 @@ public class MainDemoApp {
 		
 		// call the business method
 		Account myAccount = new Account();
-		theAccountDAO.addAccount(myAccount);
+		theAccountDAO.addAccount(myAccount, true);
 		theMembershipDAO.addAccount();
 		
 		// close the context
