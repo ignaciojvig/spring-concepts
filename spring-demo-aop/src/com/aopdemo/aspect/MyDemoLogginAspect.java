@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class MyDemoLogginAspect {
 
 	// this is where all advices can be added
-	@Before("execution(* add*(com.aopdemo.Account, ..))") // Pointcut Expression
+	@Before("execution(* add*(..))") // Pointcut Expression
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n ==========> Executing @Before Advice on addAccount()");
 	}
