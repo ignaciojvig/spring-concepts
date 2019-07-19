@@ -13,7 +13,7 @@ public class AroundDemoApp {
 				new AnnotationConfigApplicationContext(DemoConfig.class);
 		
 		// get the bean from spring container
-		TrafficFortuneService theTrafficFortuneService = context.getBean("TrafficFortuneService", TrafficFortuneService.class);
+		TrafficFortuneService theTrafficFortuneService = context.getBean("trafficFortuneService", TrafficFortuneService.class);
 		
 		System.out.println("Calling Fortune");
 		
