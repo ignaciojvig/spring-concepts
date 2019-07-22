@@ -18,7 +18,6 @@ import com.aopdemo.Account;
 
 @Aspect
 @Component
-@Order(2)
 public class MyDemoLogginAspect {
 	
 	@Around("execution(* com.aopdemo.service.*.getFortune(..))")
