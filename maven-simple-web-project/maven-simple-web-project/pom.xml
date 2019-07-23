@@ -9,6 +9,13 @@
   <url>http://maven.apache.org</url>
   <dependencies>
   
+  	<!-- add support for Hibernate: hibernate-core -->
+  	<dependency>
+	  <groupId>org.hibernate</groupId>
+	  <artifactId>hibernate-core</artifactId>
+	  <version>5.4.3.Final</version>
+	</dependency>
+  
   	<!-- add Servlet API dependency: javax.servlet-api -->
   	<dependency>
 	  <groupId>javax.servlet</groupId>
