@@ -12,7 +12,6 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan(basePackages="com.ignacio")
 public class DemoAppConfig {
 
-	
 	// define a bean for ViewResolver
 	@Bean
 	public ViewResolver viewResolver() {
